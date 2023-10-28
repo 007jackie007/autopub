@@ -1,7 +1,13 @@
+using Microsoft.Extensions.Configuration;
+using WebApplication5;
+
 var builder = WebApplication.CreateBuilder(args);
+string connectionString = builder.Configuration.GetConnectionString("AppConfig");
+builder.Configuration.AddAzureAppConfiguration(connectionString);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.Configure<Settings>(builder.Configuration.GetSection("TestApp:Settings"));
 
 var app = builder.Build();
 
