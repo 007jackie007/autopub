@@ -19,6 +19,9 @@ builder.Configuration.AddAzureAppConfiguration(options =>
 builder.Services.AddRazorPages();
 builder.Services.Configure<Settings>(builder.Configuration.GetSection("TestApp:Settings"));
 
+var appConfigSeting = builder.Configuration["TestApp:Settings:BackgroundColor"];
+throw new ArgumentException($"value of azure app configuration : {appConfigSeting}");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
