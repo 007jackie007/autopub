@@ -1,10 +1,14 @@
+using Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using WebApplication5;
 
 var builder = WebApplication.CreateBuilder(args);
-string connectionString = builder.Configuration.GetConnectionString("AppConfig");
-builder.Configuration.AddAzureAppConfiguration(connectionString);
-
+//string connectionString = builder.Configuration.GetConnectionString("AppConfig");
+//builder.Configuration.AddAzureAppConfiguration(connectionString);
+builder.Configuration.AddAzureAppConfiguration(options =>
+    options.Connect(
+        new Uri("https://appconfigjackietestdev.azconfig.io"),
+        new ManagedIdentityCredential()));
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.Configure<Settings>(builder.Configuration.GetSection("TestApp:Settings"));
