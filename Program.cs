@@ -1,5 +1,6 @@
 using Azure.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using WebApplication5;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddAzureAppConfiguration(options =>
     options.Connect(
         new Uri("https://appconfigjackietestdev.azconfig.io"),
-        new DefaultAzureCredential()));
+        new DefaultAzureCredential(new DefaultAzureCredentialOptions() { TenantId = "4665a88d-987e-4633-9eaf-2d672f22c04d" })));
+
+//Connect(new Uri(connectionString),
+//new DefaultAzureCredential(new DefaultAzureCredentialOptions() { TenantId = "c92c5826-4969-414a-a289-1409683ebac0" }))
+
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.Configure<Settings>(builder.Configuration.GetSection("TestApp:Settings"));
