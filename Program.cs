@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddAzureAppConfiguration(options =>
     options.Connect(
         new Uri("https://appconfigjackietestdev.azconfig.io"),
-        new ManagedIdentityCredential()));
+        new MyClientAssertionCredential()));
 
 //Connect(new Uri(connectionString),
 //new DefaultAzureCredential(new DefaultAzureCredentialOptions() { TenantId = "c92c5826-4969-414a-a289-1409683ebac0" }))
