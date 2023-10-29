@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddAzureAppConfiguration(options =>
     options.Connect(
         new Uri("https://appconfigjackietestdev.azconfig.io"),
-        new ManagedIdentityCredential("4665a88d-987e-4633-9eaf-2d672f22c04d")));
+        new DefaultAzureCredential()));
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.Configure<Settings>(builder.Configuration.GetSection("TestApp:Settings"));
