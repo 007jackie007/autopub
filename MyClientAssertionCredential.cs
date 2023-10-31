@@ -4,7 +4,6 @@ using System;
 using Microsoft.Identity.Client;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Transactions;
 // <directives>
 
 public class MyClientAssertionCredential : TokenCredential
@@ -20,7 +19,7 @@ public class MyClientAssertionCredential : TokenCredential
         // 		the tenantID provided via azure-wi-webhook-config for the webhook will be used.
         // 	AZURE_FEDERATED_TOKEN_FILE is the service account token path
         //var clientID = "be012b00-08d1-43bb-8cbd-42a5cb2ee4da";
-        var clientID = "6d7dcba3-5544-493d-817f-d4c4a21991c0"; // enterprise app object id
+        var clientID = "cd49ccb2-90b7-4e03-b52a-550eae87c50f";
         var tokenPath = "/var/run/secrets/azure/tokens/azure-identity-token";
         var tenantID = "4665a88d-987e-4633-9eaf-2d672f22c04d";
 
